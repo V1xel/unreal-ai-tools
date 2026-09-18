@@ -1,22 +1,22 @@
-"""Typer entrypoint -- `umcp`. Calls into core/, never talks HTTP directly.
+"""Typer entrypoint -- `uaicli`. Calls into core/, never talks HTTP directly.
 
 Command tree mirrors docs/tools/json-data-assets.md ("Tool / CLI surface") in the
 toolkit repo:
 
-    umcp editor start|stop|status|logs
-    umcp data-asset sync <json-path>
-    umcp data-asset read <asset-path> [--out file.json]
-    umcp data-asset list [--folder] [--type]
-    umcp data-asset validate <json-path>
-    umcp data-asset types
-    umcp asset move <src> <dst>                 # any asset/JSON source/file, reference-safe
-    umcp asset delete <path> [--force]
-    umcp observer place <name> <x> <y> <z>      # named viewpoint, editor + PIE
-    umcp observer describe <name>               # what it sees, as compact JSON
-    umcp object create <name> <x> <y> <z>       # spawn/move a scene object (defaults to a cube)
-    umcp object remove <name>
-    umcp transform set <name> [--x --y --z] [--pitch --yaw --roll] [--sx --sy --sz]
-    umcp shell                                  # interactive: connect once, run many commands
+    uaicli editor start|stop|status|logs
+    uaicli data-asset sync <json-path>
+    uaicli data-asset read <asset-path> [--out file.json]
+    uaicli data-asset list [--folder] [--type]
+    uaicli data-asset validate <json-path>
+    uaicli data-asset types
+    uaicli asset move <src> <dst>                 # any asset/JSON source/file, reference-safe
+    uaicli asset delete <path> [--force]
+    uaicli observer place <name> <x> <y> <z>      # named viewpoint, editor + PIE
+    uaicli observer describe <name>               # what it sees, as compact JSON
+    uaicli object create <name> <x> <y> <z>       # spawn/move a scene object (defaults to a cube)
+    uaicli object remove <name>
+    uaicli transform set <name> [--x --y --z] [--pitch --yaw --roll] [--sx --sy --sz]
+    uaicli shell                                  # interactive: connect once, run many commands
 
 """
 

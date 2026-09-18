@@ -1,11 +1,11 @@
-"""Interactive mode: `umcp shell` -- connect once (one EditorClient, one HTTP
+"""Interactive mode: `uaicli shell` -- connect once (one EditorClient, one HTTP
 connection), then run any number of commands without repeating --project/--port
 or paying a fresh Python-process/argument-parsing cost per command.
 
 Reads one command per line from stdin, so it works both as a human-typed REPL
 and as a batch driven by a pipe or heredoc:
 
-    umcp --project C:\\...\\AITT.uproject shell <<'EOF'
+    uaicli --project C:\\...\\AITT.uproject shell <<'EOF'
     types
     sync C:\\...\\Content\\Items\\HealthPotion.json
     listjsonassets
@@ -39,7 +39,7 @@ from core.editor_client import EditorClient, EditorClientError
 
 from .common import asset_path_to_json_file, format_json, resolve_asset_path
 
-HISTORY_FILE = Path.home() / ".umcp_history"
+HISTORY_FILE = Path.home() / ".uaicli_history"
 HISTORY_LENGTH = 1000
 
 
@@ -63,11 +63,11 @@ class InteractiveShell(cmd.Cmd):
         # (or a headless) editor instance.
         pid, headless = client.pid_and_headless()
         if pid is None:
-            tag = "umcp"
+            tag = "uaicli"
         elif headless:
-            tag = f"umcp@headless:{pid}"
+            tag = f"uaicli@headless:{pid}"
         else:
-            tag = f"umcp@{pid}"
+            tag = f"uaicli@{pid}"
         self.prompt = f"{tag}> " if interactive else ""
 
         self.intro = (

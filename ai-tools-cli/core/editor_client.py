@@ -3,7 +3,7 @@
 See docs/architecture.md ("Editor lifecycle") in the unreal-mcp-toolkit repo: the
 toolkit owns starting/stopping/health-checking the editor transparently so the
 data-asset operations never have to think about it, while the CLI also exposes
-manual `umcp editor start|stop|status|logs` commands for a human tester.
+manual `uaicli editor start|stop|status|logs` commands for a human tester.
 """
 
 from __future__ import annotations
@@ -43,11 +43,11 @@ class EditorClientError(RuntimeError):
 
 def find_uproject(start: Path | None = None) -> Path:
     """Walks up from `start` (default: cwd) looking for a single *.uproject file."""
-    env_project = os.environ.get("UMCP_PROJECT")
+    env_project = os.environ.get("UAICLI_PROJECT")
     if env_project:
         path = Path(env_project).resolve()
         if not path.is_file():
-            raise EditorClientError(f"UMCP_PROJECT points to a missing file: {path}")
+            raise EditorClientError(f"UAICLI_PROJECT points to a missing file: {path}")
         return path
 
     current = (start or Path.cwd()).resolve()
@@ -62,13 +62,13 @@ def find_uproject(start: Path | None = None) -> Path:
             )
     raise EditorClientError(
         "no .uproject file found in the current directory or any parent -- "
-        "pass --project, or set UMCP_PROJECT"
+        "pass --project, or set UAICLI_PROJECT"
     )
 
 
 def find_engine_dir(uproject: Path) -> Path:
     """Resolves the Engine install directory for `uproject`'s EngineAssociation."""
-    env_engine = os.environ.get("UMCP_ENGINE_DIR")
+    env_engine = os.environ.get("UAICLI_ENGINE_DIR")
     if env_engine:
         return Path(env_engine)
 
@@ -99,7 +99,7 @@ def find_engine_dir(uproject: Path) -> Path:
 
     raise EditorClientError(
         f"could not resolve engine install for EngineAssociation '{association}' -- "
-        "set UMCP_ENGINE_DIR to the engine root (the folder containing 'Engine\\')"
+        "set UAICLI_ENGINE_DIR to the engine root (the folder containing 'Engine\\')"
     )
 
 
@@ -201,7 +201,7 @@ def list_running_editors() -> list[dict]:
 
 def discover_project(explicit: Path | None = None) -> Path:
     """Resolves which .uproject to talk to, in priority order: an explicit --project, then
-    UMCP_PROJECT, then whichever editor is already running (auto-selected if there's
+    UAICLI_PROJECT, then whichever editor is already running (auto-selected if there's
     exactly one; raises listing the options if there are several so the caller can pick
     with --project), then the usual directory-walk (find_uproject) if nothing is running."""
     if explicit:
@@ -210,7 +210,7 @@ def discover_project(explicit: Path | None = None) -> Path:
             raise EditorClientError(f"project file not found: {path}")
         return path
 
-    if os.environ.get("UMCP_PROJECT"):
+    if os.environ.get("UAICLI_PROJECT"):
         return find_uproject()
 
     running = list_running_editors()
