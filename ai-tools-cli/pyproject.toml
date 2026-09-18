@@ -1,5 +1,5 @@
 [project]
-name = "unreal-ai-tools-mcp"
+name = "ai-tools-cli"
 version = "0.1.0"
 description = "CLI (and later MCP server) for driving the AITools Unreal Engine plugin's HTTP surface."
 readme = "README.md"
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-umcp = "unreal_ai_tools_mcp.cli.main:main"
+umcp = "ai_tools_cli.cli.main:main"
 
 [build-system]
 requires = ["uv_build>=0.9.26,<0.10.0"]

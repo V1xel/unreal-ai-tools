@@ -29,13 +29,13 @@ from pathlib import Path
 import questionary
 import typer
 
-from unreal_ai_tools_mcp.core import asset_ops
-from unreal_ai_tools_mcp.core import file_ops
-from unreal_ai_tools_mcp.core import json_data_asset as ops
-from unreal_ai_tools_mcp.core import observer_ops
-from unreal_ai_tools_mcp.core import scene_object_ops
-from unreal_ai_tools_mcp.core import transform_ops
-from unreal_ai_tools_mcp.core.editor_client import DEFAULT_PORT, EditorClient, EditorClientError, list_running_editors
+from ai_tools_cli.core import asset_ops
+from ai_tools_cli.core import file_ops
+from ai_tools_cli.core import json_data_asset as ops
+from ai_tools_cli.core import observer_ops
+from ai_tools_cli.core import scene_object_ops
+from ai_tools_cli.core import transform_ops
+from ai_tools_cli.core.editor_client import DEFAULT_PORT, EditorClient, EditorClientError, list_running_editors
 
 from .common import format_json, resolve_asset_path
 from .shell import InteractiveShell

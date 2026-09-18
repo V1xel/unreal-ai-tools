@@ -27,7 +27,7 @@ try:
 except ImportError:  # pragma: no cover - readline unavailable even on POSIX (rare)
     readline = None
 
-from unreal_ai_tools_mcp.core import (
+from ai_tools_cli.core import (
     asset_ops,
     file_ops,
     json_data_asset as ops,
@@ -35,7 +35,7 @@ from unreal_ai_tools_mcp.core import (
     scene_object_ops,
     transform_ops,
 )
-from unreal_ai_tools_mcp.core.editor_client import EditorClient, EditorClientError
+from ai_tools_cli.core.editor_client import EditorClient, EditorClientError
 
 from .common import asset_path_to_json_file, format_json, resolve_asset_path
 
