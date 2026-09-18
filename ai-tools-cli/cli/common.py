@@ -5,7 +5,7 @@ from __future__ import annotations
 import json as json_module
 from pathlib import Path
 
-from ai_tools_cli.core.editor_client import EditorClientError
+from core.editor_client import EditorClientError
 
 
 def resolve_asset_path(project: Path, json_path: Path) -> str:
