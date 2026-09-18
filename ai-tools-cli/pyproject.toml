@@ -21,3 +21,6 @@ umcp = "ai_tools_cli.cli.main:main"
 [build-system]
 requires = ["uv_build>=0.9.26,<0.10.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
