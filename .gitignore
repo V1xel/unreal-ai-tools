@@ -1,0 +1,15 @@
+# Unreal plugin build artifacts
+UnrealAITools/Binaries/
+UnrealAITools/Intermediate/
+*.pdb
+*.target
+
+# Python
+ai-tools-cli/__pycache__/
+ai-tools-cli/**/__pycache__/
+ai-tools-cli/*.py[oc]
+ai-tools-cli/build/
+ai-tools-cli/dist/
+ai-tools-cli/wheels/
+ai-tools-cli/*.egg-info
+ai-tools-cli/.venv/
